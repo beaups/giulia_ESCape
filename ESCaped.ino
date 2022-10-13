@@ -16,8 +16,8 @@
 //DNA Mode definitions
 #define DNA_RACE            0x31
 #define DNA_DYNAMIC         0x9
-#define DNA_NEUTERED        0x1//might have swapped with A mode
-#define DNA_AWFUL           0x11//might have swapped with N mode
+#define DNA_NATURAL        0x1//might have swapped with A mode
+#define DNA_ADVANCEDEFFICIENCY           0x11//might have swapped with N mode
 
 #define SPI_CS_CAN          9
 
@@ -60,7 +60,7 @@ void setup()
 }
 
 void handle_tcesc_control() {
-  if(tcesc_buf[1] != DNA_NEUTERED && tcesc_buf[1] != DNA_DYNAMIC && tcesc_buf[1] != DNA_AWFUL && tcesc_buf[1] != DNA_RACE)
+  if(tcesc_buf[1] != DNA_NATURAL && tcesc_buf[1] != DNA_DYNAMIC && tcesc_buf[1] != DNA_ADVANCEDEFFICIENCY && tcesc_buf[1] != DNA_RACE)
     return;//sanity check, don't want to send random shit to module if buffer corrupt/incorrect
   if(tc_disable && tcesc_buf[1] != DNA_RACE)
     tcesc_buf[1] = DNA_RACE;//TCESC disable from Giulia QV in race mode
